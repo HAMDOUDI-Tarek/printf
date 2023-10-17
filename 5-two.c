@@ -2,21 +2,20 @@
 #include <stdarg.h>
 
 /**
- * print_HEX - converts to HEXADECIMAL.
- * @val: value to be converted .
+ * print_HEX_extra - performs a conversion to HEXADECIMAL.
+ * @num: value to be converted.
  * Return: cont.
  */
 
-int print_HEX(va_list val)
+int print_HEX_extra(unsigned int num)
 {
 	int i, cont = 0;
 	int *arr;
-	unsigned int num = va_arg(val, unsigned int);
 	unsigned int temp = num;
 
-	while (num / 16 != 0)
+	while (temp / 16 != 0)
 	{
-		num = num / 16;
+		temp = temp / 16;
 		cont++;
 	}
 	cont++;
@@ -29,11 +28,13 @@ int print_HEX(va_list val)
 		arr[i] = temp % 16;
 		temp = temp / 16;
 	}
-	for (i = cont - 1; i >= 0; i++)
+	for (i = cont - 1; i >= 0; i--)
 	{
 		if (arr[i] > 9)
-			arr[1] = arr[i] + 7;
-		_putchar(arr[i] + '0');
+			arr[i] = arr[i] - 10 + 'A';
+		else
+			arr[i] = arr[i] + '0';
+		_putchar(arr[i]);
 	}
 	free(arr);
 	return (cont);
