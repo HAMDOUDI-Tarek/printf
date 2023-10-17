@@ -121,7 +121,8 @@ int print_hexa_upper(va_list t, char b[], int f, int w, int p, int s)
  * @s: Size specification
  * Return: Number of chars printed
  */
-int print_hexa(va_list t, char map_to[], char b[], int f, char fc, int w, int p, int s)
+int print_hexa(va_list t, char map_to[], char b[],
+		int f, char fc, int w, int p, int s)
 {
 	int i = BUFF_SIZE - 2;
 	unsigned long int num = va_arg(t, unsigned long int);
